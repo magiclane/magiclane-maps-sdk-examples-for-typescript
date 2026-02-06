@@ -1,0 +1,39 @@
+# Node modules
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+.env.*
+
+# IDE files
+.vscode/
+.idea/
+
+# Sentry CLI auth token (if used)
+.auth_token
+
+# Misc
+*.local
+*.sublime-workspace
+distexamples/
+
+# API Token (create from shared/token.template.ts)
+shared/token.ts
+
+# Build scripts output
+scripts/.build-cache.json
+scripts/build-results.json
+scripts/smoke-results.json

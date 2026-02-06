@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>External Position Source Navigation</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    }
+    
+    #map-container {
+      width: 100%;
+      height: 100%;
+      border: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      overflow: hidden;
+      touch-action: none;
+    }
+
+  </style>
+</head>
+<body>
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const mapContainer = document.getElementById("map-container");
+
+    if (mapContainer) {
+      // The function to kill the event
+      const killEvent = (e) => {
+        // This stops the browser from scrolling the parent page
+        e.preventDefault(); 
+        // This stops the event from bubbling up within the iframe
+        e.stopPropagation();
+      };
+
+      // 1. MOUSE WHEEL (Zooming)
+      // 'passive: false' is CRITICAL. Without it, e.preventDefault() is ignored.
+      mapContainer.addEventListener("wheel", killEvent, { passive: false });
+
+      // 2. TOUCH (Mobile/Trackpad)
+      mapContainer.addEventListener("touchmove", killEvent, { passive: false });
+      
+      // 3. OPTIONAL: Stop key presses (like arrow keys) from scrolling parent
+      window.addEventListener("keydown", (e) => {
+        if(["ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
+            e.preventDefault();
+        }
+      }, false);
+    }
+  });
+</script>
+  <div id="map-container"></div>
+  <script type="module" src="./src/index.ts"></script>
+</body>
+</html>

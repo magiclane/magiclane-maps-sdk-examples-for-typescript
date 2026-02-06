@@ -1,0 +1,12 @@
+version = 1
+
+SPDX-PackageName = "maps-sdk-examples-for-typescript"
+SPDX-PackageSupplier = "magiclane-developer@users.noreply.github.com"
+SPDX-PackageDownloadLocation = "https://github.com/magiclane/magiclane-maps-sdk-examples-for-typescript"
+SPDX-PackageComment = "A collection of examples demonstrating how to use the Magic Lane Maps SDK for TypeScript in various mapping and navigation scenarios."
+
+[[annotations]]
+path = "**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2025-2026 Magic Lane International B.V. <info@magiclane.com>"
+SPDX-License-Identifier = "Apache-2.0"
