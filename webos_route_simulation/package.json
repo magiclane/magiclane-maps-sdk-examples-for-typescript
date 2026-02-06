@@ -1,0 +1,21 @@
+{
+  "name": "webos_route_simulation",
+  "version": "1.0.0",
+  "description": "Route calculation and turn-by-turn navigation simulation on webOS",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "license": "Apache-2.0",
+  "type": "commonjs",
+  "dependencies": {
+    "@magiclane/maps-sdk": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.2.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1"
+  }
+}

@@ -64,6 +64,7 @@ Explore the examples to learn the capabilities of the SDK:
 * [Speed Watcher](speed_watcher) - Demonstrates displaying a speed indicator panel during simulation.
 * [Text Search](text_search) - Demonstrates text search with results, distances, and map highlighting.
 * [Truck Profile](truck_profile) - Demonstrates calculating routes with truck profile settings.
+* [WebOS Route Simulation](webos_route_simulation) - Demonstrates route calculation and turn-by-turn navigation simulation on webOS.
 * [What Is Nearby](what_is_nearby) - Demonstrates searching nearby locations by category using GenericCategories.
 
 ## Running individual examples

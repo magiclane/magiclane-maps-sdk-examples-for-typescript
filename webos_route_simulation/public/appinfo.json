@@ -1,0 +1,10 @@
+{
+  "id": "com.magiclane.typescript.routesimulation",
+  "version": "1.0.0",
+  "vendor": "Magic Lane International B.V.",
+  "type": "web",
+  "main": "index.html",
+  "title": "Route Simulation",
+  "icon": "icon.png",
+  "largeIcon": "largeIcon.png"
+}
