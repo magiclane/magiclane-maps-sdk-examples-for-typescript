@@ -110,7 +110,7 @@ function onBuildRouteButtonPressed() {
     latitude: 48.13993582693814,
     longitude: 11.604079110086362,
   });
-  const routePreferences = new RoutePreferences({});
+  const routePreferences = new RoutePreferences();
   showMessage('The route is calculating.');
 
   routingHandler = RoutingService.calculateRoute(

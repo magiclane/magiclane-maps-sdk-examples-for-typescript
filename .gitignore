@@ -19,7 +19,6 @@ Thumbs.db
 .env.*
 
 # IDE files
-.vscode/
 .idea/
 
 # Sentry CLI auth token (if used)

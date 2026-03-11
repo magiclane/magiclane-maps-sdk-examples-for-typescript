@@ -14,6 +14,7 @@ import {
   RouteRenderSettings,
   RouteRenderOptions,
   RouteTransportMode,
+  Coordinates,
 } from '@magiclane/maps-sdk';
 import { Range } from './range';
 import {
@@ -59,7 +60,15 @@ window.addEventListener('DOMContentLoaded', async () => {
   const wrapper = createMapView(gemKit, container, viewId, (gemMap: GemMap) => {
     map = gemMap;
     registerLandmarkTapCallback();
-    showMessage('Tap on the map to select a center point');
+    
+    // Zoom in to make landmarks visible (using Berlin as center point)
+    const initialCenter = new Coordinates({
+      latitude: 52.5200,
+      longitude: 13.4050,
+    });
+    map.centerOnCoordinates(initialCenter, { zoomLevel: 70 });
+    
+    showMessage('Tap on a landmark to start');
   });
 
   if (!wrapper) {

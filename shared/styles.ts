@@ -118,6 +118,10 @@ export const styles = {
     background: '#f44336',
     boxShadow: '0 4px 15px rgba(244, 67, 54, 0.4)',
   },
+  buttonWarning: {
+    background: '#ff9800',
+    boxShadow: '0 4px 15px rgba(255, 152, 0, 0.4)',
+  },
   buttonInfo: {
     background: '#2196f3',
     boxShadow: '0 4px 15px rgba(33, 150, 243, 0.4)',
@@ -519,3 +523,100 @@ export function createElement<K extends keyof HTMLElementTagNameMap>(
 
   return element;
 }
+
+// ============== AUTO-INJECTED CSS CLASSES ==============
+// Provides .gem-button, .gem-button-primary, etc. used by examples
+// that create buttons with className instead of inline styles.
+
+/** CSS string for gem-button classes, derived from the style objects above */
+const GEM_BUTTON_CSS = `
+.gem-button {
+  padding: 12px 24px;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-size: 15px;
+  font-family: ${FONT_STACK};
+  font-weight: 600;
+  cursor: pointer;
+  z-index: 2000;
+  transition: all 0.2s ease-in-out;
+  letter-spacing: 0.5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+.gem-button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+.gem-button:active {
+  transform: translateY(1px);
+}
+.gem-button-primary {
+  background: #673ab7;
+  box-shadow: 0 4px 15px rgba(103, 58, 183, 0.4);
+}
+.gem-button-success {
+  background: #4caf50;
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+}
+.gem-button-danger {
+  background: #f44336;
+  box-shadow: 0 4px 15px rgba(244, 67, 54, 0.4);
+}
+.gem-button-warning {
+  background: #ff9800;
+  box-shadow: 0 4px 15px rgba(255, 152, 0, 0.4);
+}
+.gem-button-info {
+  background: #2196f3;
+  box-shadow: 0 4px 15px rgba(33, 150, 243, 0.4);
+}
+.gem-button-secondary {
+  background: #fff;
+  color: #333;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+.gem-button-center {
+  position: fixed;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.gem-button-center:hover {
+  transform: translateX(-50%) translateY(-2px);
+}
+.gem-button-center:active {
+  transform: translateX(-50%) translateY(1px);
+}
+.gem-controls-bar {
+  position: fixed;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+}
+`;
+
+/**
+ * Inject gem-button CSS classes into the document.
+ * Called automatically when this module is imported in a browser context.
+ */
+export function injectGemButtonStyles(): void {
+  if (typeof document === 'undefined') return;
+  if (document.getElementById('gem-button-styles')) return;
+
+  const style = document.createElement('style');
+  style.id = 'gem-button-styles';
+  style.textContent = GEM_BUTTON_CSS;
+  document.head.appendChild(style);
+}
+
+// Auto-inject on module load in browser environments
+injectGemButtonStyles();

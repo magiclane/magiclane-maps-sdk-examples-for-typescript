@@ -44,7 +44,7 @@ function getAddress(landmark: Landmark): string {
 
 function getFormattedDistance(landmark: Landmark): string {
   try {
-    const distance = landmark.extraInfo?.getByKey?.('gmSearchResultDistance') || 0;
+    const distance = landmark.extraInfo?.getByKey?.('gm_search_result_dist') || 0;
     const km = distance / 1000;
     return `${km.toFixed(1)} km`;
   } catch {

@@ -11,7 +11,7 @@ import {
   GemError,
   CommonOverlayId,
 } from '@magiclane/maps-sdk';
-import { GEMKIT_TOKEN, showMessage } from '../../shared';
+import { GEMKIT_TOKEN, showMessage, applyStyles, mergeStyles, styles, StyleManager } from '../../shared';
 
 // Type for screen position coordinates
 interface ScreenPosition {
@@ -389,6 +389,27 @@ function setupUI() {
   `;
   appBar.textContent = 'Public Transit Stops';
   document.body.appendChild(appBar);
+
+  // Create instruction button
+  const instructionBtn = document.createElement('button');
+  instructionBtn.innerHTML = 'ℹ️ Long-press to find stops';
+  applyStyles(instructionBtn, mergeStyles(styles.buttonBase, {
+    background: '#ff9800',
+    boxShadow: '0 4px 15px rgba(255, 152, 0, 0.4)',
+  }, {
+    position: 'fixed',
+    top: '70px',
+    left: '50%',
+    transform: 'translateX(-50%)',
+  }));
+  StyleManager.addHoverEffect(instructionBtn,
+    { background: '#fb8c00', boxShadow: '0 6px 20px rgba(255, 152, 0, 0.5)' },
+    { background: '#ff9800', boxShadow: '0 4px 15px rgba(255, 152, 0, 0.4)' }
+  );
+  instructionBtn.onclick = () => {
+    showMessage('Long-press on a public transit stop marker to view schedule details');
+  };
+  document.body.appendChild(instructionBtn);
 
   // Create map container
   //   const mapContainer = document.createElement('div');

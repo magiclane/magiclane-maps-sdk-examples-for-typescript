@@ -392,7 +392,7 @@ async function calculateRoute(waypoints: Landmark[]): Promise<Route | null> {
     try {
       RoutingService.calculateRoute(
         waypoints,
-        new RoutePreferences({}),
+        new RoutePreferences(),
         (err: GemError, routes: Route[]) => {
           if (err === GemError.success && routes && routes.length > 0) {
             resolve(routes[0]);

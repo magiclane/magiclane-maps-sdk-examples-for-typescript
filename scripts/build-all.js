@@ -5,7 +5,7 @@
 // Usage: node build-all.js [--only=example1,example2] [--exclude=example1] [--no-cache]
 
 import { spawn } from 'child_process';
-import { readdir, readFile, writeFile, stat, access } from 'fs/promises';
+import { readdir, readFile, writeFile, stat, access, copyFile } from 'fs/promises';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { createHash } from 'crypto';
@@ -318,6 +318,15 @@ async function main() {
   console.log(`${colors.reset}\n`);
 
   const options = parseArgs();
+
+  // Ensure shared/token.ts exists (required for builds to resolve imports)
+  const tokenFile = join(ROOT_DIR, 'shared', 'token.ts');
+  const tokenTemplate = join(ROOT_DIR, 'shared', 'token.template.ts');
+  if (!(await fileExists(tokenFile))) {
+    console.log(`${colors.yellow}⚠  shared/token.ts not found — creating from template with placeholder token.${colors.reset}`);
+    console.log(`${colors.yellow}   To use your own token: cp shared/token.template.ts shared/token.ts and edit it.${colors.reset}\n`);
+    await copyFile(tokenTemplate, tokenFile);
+  }
 
   // Load cache
   const cache = await loadCache();

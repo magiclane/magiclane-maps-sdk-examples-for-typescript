@@ -4,7 +4,7 @@
 // Contact Magic Lane at <info@magiclane.com> for SDK licensing options.
 
 import { GemKit, GemMap, Coordinates, PositionService } from '@magiclane/maps-sdk';
-import { GEMKIT_TOKEN, showMessage } from '../../shared';
+import { GEMKIT_TOKEN, showMessage, styleButton } from '../../shared';
 
 let map: GemMap | null = null;
 let isStyleLoaded = false;
@@ -34,8 +34,10 @@ window.addEventListener('DOMContentLoaded', async () => {
   // Apply Style button
   applyStyleBtn = document.createElement('button');
   applyStyleBtn.textContent = 'Apply Map Style';
-  applyStyleBtn.className = 'gem-button gem-button-primary gem-button-center';
   applyStyleBtn.onclick = () => applyStyle();
+  styleButton(applyStyleBtn, '#673ab7', '#7e57c2', {
+    display: 'flex',
+  });
   document.body.appendChild(applyStyleBtn);
 });
 
@@ -52,13 +54,19 @@ async function applyStyle() {
     const response = await fetch('./Basic_1_Oldtime-1_21_656.style');
     if (!response.ok) throw new Error('Failed to load style file');
     const styleBuffer = await response.arrayBuffer();
+    
+    // Register callback to be notified when map style is changed
+    map.registerSetMapStyleCallback((id: number, stylePath: string, viaApi: boolean) => {
+      showMessage('Map style applied successfully!');
+      isStyleLoaded = true;
+      applyStyleBtn.style.display = 'none';
+      // Center the map after style is applied
+      map?.centerOnCoordinates(new Coordinates({ latitude: 45, longitude: 20 }), { zoomLevel: 25 });
+    });
+    
     // Apply style to map (using setMapStyleByBuffer)
     map.preferences.setMapStyleByBuffer(new Uint8Array(styleBuffer));
-    isStyleLoaded = true;
-    applyStyleBtn.style.display = 'none';
-    showMessage('Map style applied!');
-    // Center the map after style is applied
-    map.centerOnCoordinates(new Coordinates({ latitude: 45, longitude: 20 }), { zoomLevel: 25 });
+    showMessage('Loading map style...');
   } catch (error) {
     showMessage('Error loading map style');
     console.error(error);

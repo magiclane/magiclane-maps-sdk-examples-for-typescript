@@ -4,7 +4,7 @@
 // Contact Magic Lane at <info@magiclane.com> for SDK licensing options.
 
 import { GemKit, GemMap, Coordinates, PositionService } from '@magiclane/maps-sdk';
-import { GEMKIT_TOKEN, showMessage, ICONS } from '../../shared';
+import { GEMKIT_TOKEN, showMessage, ICONS, applyStyles, styles } from '../../shared';
 
 // Type for screen position coordinates
 interface ScreenPosition {
@@ -22,7 +22,7 @@ function updateStreetNameUI(name: string) {
   if (!streetNameDiv) return;
 
   if (name) {
-    streetNameDiv.innerHTML = `${ICONS.signpost} <span>${name}</span>`;
+    streetNameDiv.innerHTML = `${ICONS.directions} <span>${name}</span>`;
     streetNameDiv.style.display = 'flex';
     // Animation
     requestAnimationFrame(() => {
@@ -85,31 +85,30 @@ window.addEventListener('DOMContentLoaded', async () => {
 
   // Create the street name display
   streetNameDiv = document.createElement('div');
-  // Modern Information Card UI
-  streetNameDiv.style.cssText = `
-      position: fixed;
-      bottom: 40px;
-      left: 50%;
-      transform: translateX(-50%) translateY(10px);
-      background: rgba(255, 255, 255, 0.95);
-      color: #333;
-      border-radius: 50px;
-      padding: 14px 28px;
-      font-size: 1.1em;
-      font-weight: 600;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      box-shadow: 0 6px 25px rgba(0,0,0,0.15);
-      z-index: 2000;
-      min-width: 150px;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      backdrop-filter: blur(10px);
-      opacity: 0;
-      transition: opacity 0.3s ease, transform 0.3s ease;
-      white-space: nowrap;
-    `;
+  applyStyles(streetNameDiv, {
+    position: 'fixed',
+    bottom: '40px',
+    left: '50%',
+    transform: 'translateX(-50%) translateY(10px)',
+    background: 'rgba(255, 255, 255, 0.95)',
+    color: '#333',
+    borderRadius: '50px',
+    padding: '14px 28px',
+    fontSize: '1.1em',
+    fontWeight: '600',
+    fontFamily: styles.toast.fontFamily,
+    boxShadow: '0 6px 25px rgba(0,0,0,0.15)',
+    zIndex: '2000',
+    minWidth: '150px',
+    display: 'none',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '12px',
+    backdropFilter: 'blur(10px)',
+    opacity: '0',
+    transition: 'opacity 0.3s ease, transform 0.3s ease',
+    whiteSpace: 'nowrap',
+  });
   document.body.appendChild(streetNameDiv);
 
   // Initial call (hidden)

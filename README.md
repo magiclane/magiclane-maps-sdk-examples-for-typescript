@@ -152,6 +152,34 @@ npm run format        # Format all TypeScript files
 npm run format:check  # Check formatting without making changes
 ```
 
+## VSCode Integration
+
+This repository includes shared VSCode configuration in `.vscode/` for a consistent development experience.
+
+### Recommended extensions
+
+When you open the project, VSCode will prompt you to install:
+- **Prettier** (`esbenp.prettier-vscode`) - Code formatter
+- **Playwright** (`ms-playwright.playwright`) - Test runner
+
+### Tasks
+
+Six tasks are available via **Terminal > Run Task...**:
+
+| Task | Shortcut | Description |
+|------|----------|-------------|
+| Build All Examples | Cmd+Shift+B | Compile every example (default build task) |
+| Run Smoke Tests | | Playwright browser tests |
+| Build + Test All | | Build then smoke-test (default test task) |
+| Format All Examples | | Prettier write mode |
+| Format Check | | Prettier check mode |
+| Install Script Dependencies | | `npm install` in `scripts/` |
+
+### Settings
+
+- **Format on save** is enabled for TypeScript and JavaScript files using Prettier.
+- **`node_modules/`** and **`dist/`** directories are hidden from the explorer and search.
+
 ## Developer Resources
 
 - [TypeScript SDK Documentation](https://developer.magiclane.com/docs/typescript): Detailed guides and API references for the SDK.

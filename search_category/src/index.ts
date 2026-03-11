@@ -16,6 +16,7 @@ import {
   HighlightOptions,
   AddressField,
   GemIcon,
+  Coordinates,
 } from '@magiclane/maps-sdk';
 import { GEMKIT_TOKEN, showMessage, ICONS } from '../../shared';
 
@@ -23,6 +24,7 @@ let map: GemMap | null = null;
 let selectedCategories: LandmarkCategory[] = [];
 let searchResults: Landmark[] = [];
 let categories: LandmarkCategory[] = [];
+let searchCenterCoords: Coordinates | null = null;
 
 // UI References
 let sidebarPanel: HTMLDivElement;
@@ -257,6 +259,9 @@ function performSearch(text: string) {
     }
   });
 
+  // Store search center for distance calculations
+  searchCenterCoords = coords;
+
   // Call SDK search
   SearchService.searchAroundPosition({
     position: coords,
@@ -277,7 +282,14 @@ function performSearch(text: string) {
 
 function getFormattedDistance(landmark: Landmark): string {
   try {
-    const dist = landmark.extraInfo?.getByKey?.('gmSearchResultDistance') || 0;
+    // Try to get distance from extraInfo first
+    let dist = landmark.extraInfo?.getByKey?.('gm_search_result_dist') || 0;
+    
+    // If distance is 0 and we have search center coords, calculate manually
+    if (dist === 0 && searchCenterCoords && landmark.coordinates) {
+      dist = searchCenterCoords.distance(landmark.coordinates);
+    }
+    
     const km = (dist / 1000).toFixed(1);
     return `${km} km`;
   } catch {

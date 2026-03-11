@@ -1,6 +1,6 @@
 {
   "name": "follow_position",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Demonstrates live position tracking with startFollowingPosition",
   "main": "src/index.ts",
   "scripts": {
@@ -16,6 +16,6 @@
     "vite": "^6.3.5"
     },
   "dependencies": {
-    "@magiclane/maps-sdk": "^1.0.0"
+  "@magiclane/maps-sdk": "^1.1.0"
   }
 }

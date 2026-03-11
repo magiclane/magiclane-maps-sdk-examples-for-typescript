@@ -17,8 +17,9 @@ import {
   Route,
   TaskHandler,
   NavigationEventType,
+  NavigationInstructionUpdateEvents,
 } from '@magiclane/maps-sdk';
-import { GEMKIT_TOKEN, showMessage, convertDistance, convertDuration } from '../../shared';
+import { GEMKIT_TOKEN, showMessage, convertDistance, convertDuration, styleButton } from '../../shared';
 
 let map: GemMap | null = null;
 let currentInstruction: NavigationInstruction | null = null;
@@ -74,7 +75,7 @@ function onBuildRouteButtonPressed() {
   });
 
   // Define the route preferences
-  const routePreferences = new RoutePreferences({});
+  const routePreferences = new RoutePreferences();
 
   showMessage('The route is calculating.');
 
@@ -131,7 +132,7 @@ function startSimulation() {
   navigationHandler = NavigationService.startSimulation(routes.mainRoute, undefined, {
     onNavigationInstruction: (
       instruction: NavigationInstruction,
-      events: NavigationEventType[]
+      events: Set<NavigationInstructionUpdateEvents>
     ) => {
       isSimulationActive = true;
       currentInstruction = instruction;
@@ -338,22 +339,28 @@ window.addEventListener('DOMContentLoaded', async () => {
   // Build Route button
   buildRouteBtn = document.createElement('button');
   buildRouteBtn.textContent = 'Build Route';
-  buildRouteBtn.className = 'gem-button gem-button-primary gem-button-center';
   buildRouteBtn.onclick = () => onBuildRouteButtonPressed();
+  styleButton(buildRouteBtn, '#673ab7', '#7e57c2', {
+    display: 'block',
+  });
   document.body.appendChild(buildRouteBtn);
 
   // Start Simulation button
   startSimulationBtn = document.createElement('button');
   startSimulationBtn.textContent = 'Start Simulation';
-  startSimulationBtn.className = 'gem-button gem-button-success gem-button-center';
   startSimulationBtn.onclick = () => startSimulation();
+  styleButton(startSimulationBtn, '#4caf50', '#66bb6a', {
+    display: 'none',
+  });
   document.body.appendChild(startSimulationBtn);
 
   // Stop Simulation button
   stopSimulationBtn = document.createElement('button');
   stopSimulationBtn.textContent = 'Stop Simulation';
-  stopSimulationBtn.className = 'gem-button gem-button-danger gem-button-center';
   stopSimulationBtn.onclick = () => stopSimulation();
+  styleButton(stopSimulationBtn, '#f44336', '#e57373', {
+    display: 'none',
+  });
   document.body.appendChild(stopSimulationBtn);
 
   // Navigation panel (Container for Instructions)

@@ -1,0 +1,54 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build All Examples",
+      "type": "shell",
+      "command": "node build-all.js",
+      "options": { "cwd": "${workspaceFolder}/scripts" },
+      "group": { "kind": "build", "isDefault": true },
+      "dependsOn": ["Install Script Dependencies"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Run Smoke Tests",
+      "type": "shell",
+      "command": "node smoke-test.js",
+      "options": { "cwd": "${workspaceFolder}/scripts" },
+      "dependsOn": ["Install Script Dependencies"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Build + Test All",
+      "type": "shell",
+      "command": "node build-all.js && node smoke-test.js",
+      "options": { "cwd": "${workspaceFolder}/scripts" },
+      "group": { "kind": "test", "isDefault": true },
+      "dependsOn": ["Install Script Dependencies"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Format All Examples",
+      "type": "shell",
+      "command": "npx prettier --write \"../**/*.ts\" --ignore-path ../.prettierignore",
+      "options": { "cwd": "${workspaceFolder}/scripts" },
+      "dependsOn": ["Install Script Dependencies"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Format Check",
+      "type": "shell",
+      "command": "npx prettier --check \"../**/*.ts\" --ignore-path ../.prettierignore",
+      "options": { "cwd": "${workspaceFolder}/scripts" },
+      "dependsOn": ["Install Script Dependencies"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Install Script Dependencies",
+      "type": "shell",
+      "command": "npm install",
+      "options": { "cwd": "${workspaceFolder}/scripts" },
+      "problemMatcher": []
+    }
+  ]
+}

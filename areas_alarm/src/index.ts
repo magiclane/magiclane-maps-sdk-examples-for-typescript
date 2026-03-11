@@ -27,7 +27,7 @@ import {
   GemAnimation,
   AnimationType,
 } from '@magiclane/maps-sdk';
-import { GEMKIT_TOKEN, showMessage } from '../../shared';
+import { GEMKIT_TOKEN, showMessage, styleButton } from '../../shared';
 
 let map: GemMap | null = null;
 
@@ -155,7 +155,7 @@ function onBuildRouteButtonPressed() {
   });
 
   // Define the route preferences
-  const routePreferences = new RoutePreferences({});
+  const routePreferences = new RoutePreferences();
   showMessage('The route is calculating.');
 
   // Calculate route
@@ -296,22 +296,28 @@ window.addEventListener('DOMContentLoaded', async () => {
   // Build Route button
   buildRouteBtn = document.createElement('button');
   buildRouteBtn.textContent = 'Build Route';
-  buildRouteBtn.className = 'gem-button gem-button-primary gem-button-center';
   buildRouteBtn.onclick = onBuildRouteButtonPressed;
+  styleButton(buildRouteBtn, '#673ab7', '#7e57c2', {
+    display: 'block',
+  });
   document.body.appendChild(buildRouteBtn);
 
   // Start Simulation button
   startSimBtn = document.createElement('button');
   startSimBtn.textContent = 'Start Simulation';
-  startSimBtn.className = 'gem-button gem-button-success gem-button-center';
   startSimBtn.onclick = startSimulation;
+  styleButton(startSimBtn, '#4caf50', '#66bb6a', {
+    display: 'none',
+  });
   document.body.appendChild(startSimBtn);
 
   // Stop Simulation button
   stopSimBtn = document.createElement('button');
   stopSimBtn.textContent = 'Stop Simulation';
-  stopSimBtn.className = 'gem-button gem-button-danger gem-button-center';
   stopSimBtn.onclick = stopSimulation;
+  styleButton(stopSimBtn, '#f44336', '#e57373', {
+    display: 'none',
+  });
   document.body.appendChild(stopSimBtn);
 
   updateUI();

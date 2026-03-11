@@ -82,7 +82,7 @@ function addMarkers() {
         return;
       }
 
-      const ms = new MarkerCollectionRenderSettings({});
+      const ms = new MarkerCollectionRenderSettings();
       map?.preferences.markers.add(response[0], { settings: ms, externalRender: externalRender!! });
       map?.centerOnArea(response[0].area);
 
@@ -132,10 +132,10 @@ window.addEventListener('DOMContentLoaded', async () => {
 
   // Add Markers button
   const addMarkersBtn = document.createElement('button');
-  addMarkersBtn.innerHTML = `${ICONS.addLocation} Add Markers`;
+  addMarkersBtn.innerHTML = `Add Markers`;
 
   // Apply Modern Style
-  styleButton(addMarkersBtn, '#007bff', '#0056b3'); // Blue
+  styleButton(addMarkersBtn, '#007bff', '#0056b3', { display: 'flex' }); // Blue
 
   addMarkersBtn.onclick = () => addMarkers();
   document.body.appendChild(addMarkersBtn);

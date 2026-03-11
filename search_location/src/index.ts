@@ -209,7 +209,7 @@ function performSearch(lat: string, lng: string) {
 
 function getFormattedDistance(landmark: Landmark): string {
   try {
-    const dist = landmark.extraInfo?.getByKey?.('gmSearchResultDistance') || 0;
+    const dist = landmark.extraInfo?.getByKey?.('gm_search_result_dist') || 0;
     const km = (dist / 1000).toFixed(1);
     return `${km} km`;
   } catch {

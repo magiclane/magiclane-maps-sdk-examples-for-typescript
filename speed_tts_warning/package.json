@@ -1,6 +1,6 @@
 {
   "name": "speed_tts_warning",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Demonstrates text-to-speech speed warnings and speed limit display",
   "main": "src/index.ts",
   "scripts": {
@@ -16,6 +16,6 @@
     "vite": "^6.3.5"
     },
   "dependencies": {
-    "@magiclane/maps-sdk": "^1.0.0"
+  "@magiclane/maps-sdk": "^1.1.0"
   }
 }

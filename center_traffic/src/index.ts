@@ -14,7 +14,7 @@ import {
   Route,
   TaskHandler,
 } from '@magiclane/maps-sdk';
-import { GEMKIT_TOKEN, showMessage, ICONS } from '../../shared';
+import { GEMKIT_TOKEN, showMessage, ICONS, applyStyles, mergeStyles, styles, StyleManager } from '../../shared';
 
 let map: GemMap | null = null;
 let routingHandler: TaskHandler | null = null;
@@ -64,7 +64,7 @@ function onBuildRouteButtonPressed() {
   });
 
   // Define the route preferences
-  const routePreferences = new RoutePreferences({});
+  const routePreferences = new RoutePreferences();
 
   showMessage('The route is being calculated.');
 
@@ -142,31 +142,74 @@ window.addEventListener('DOMContentLoaded', async () => {
   // Build Route button
   buildRouteBtn = document.createElement('button');
   buildRouteBtn.innerHTML = `${ICONS.directions} Build Route`;
-  buildRouteBtn.className = 'gem-button gem-button-primary gem-button-center';
   buildRouteBtn.onclick = () => onBuildRouteButtonPressed();
+  applyStyles(buildRouteBtn, mergeStyles(styles.buttonBase, styles.buttonPrimary, {
+    position: 'fixed',
+    top: '30px',
+    left: '50%',
+    transform: 'translateX(-50%)',
+    display: 'none',
+  }));
+  StyleManager.addHoverEffect(buildRouteBtn,
+    { background: '#7e57c2', boxShadow: '0 6px 20px rgba(103, 58, 183, 0.5)' },
+    { background: '#673ab7', boxShadow: '0 4px 15px rgba(103, 58, 183, 0.4)' }
+  );
   document.body.appendChild(buildRouteBtn);
 
   // Cancel Route button
   cancelRouteBtn = document.createElement('button');
   cancelRouteBtn.innerHTML = `${ICONS.close} Cancel`;
-  cancelRouteBtn.className = 'gem-button gem-button-danger gem-button-center';
   cancelRouteBtn.onclick = () => onCancelRouteButtonPressed();
+  applyStyles(cancelRouteBtn, mergeStyles(styles.buttonBase, styles.buttonDanger, {
+    position: 'fixed',
+    top: '30px',
+    left: '50%',
+    transform: 'translateX(-50%)',
+    display: 'none',
+  }));
+  StyleManager.addHoverEffect(cancelRouteBtn,
+    { background: '#e53935', boxShadow: '0 6px 20px rgba(244, 67, 54, 0.5)' },
+    { background: '#f44336', boxShadow: '0 4px 15px rgba(244, 67, 54, 0.4)' }
+  );
   document.body.appendChild(cancelRouteBtn);
 
   // Center Traffic button
   centerTrafficBtn = document.createElement('button');
-  centerTrafficBtn.innerHTML = `${ICONS.traffic} Center on Traffic`;
-  centerTrafficBtn.className = 'gem-button gem-button-warning gem-button-center';
+  centerTrafficBtn.innerHTML = `${ICONS.warning} Center on Traffic`;
   centerTrafficBtn.onclick = () => {
     if (currentRoute) centerOnTraffic(currentRoute);
   };
+  applyStyles(centerTrafficBtn, mergeStyles(styles.buttonBase, {
+    background: '#ff9800',
+    boxShadow: '0 4px 15px rgba(255, 152, 0, 0.4)',
+  }, {
+    position: 'fixed',
+    top: '30px',
+    left: '40%',
+    transform: 'translateX(-50%)',
+    display: 'none',
+  }));
+  StyleManager.addHoverEffect(centerTrafficBtn,
+    { background: '#fb8c00', boxShadow: '0 6px 20px rgba(255, 152, 0, 0.5)' },
+    { background: '#ff9800', boxShadow: '0 4px 15px rgba(255, 152, 0, 0.4)' }
+  );
   document.body.appendChild(centerTrafficBtn);
 
   // Clear Routes button
   clearRoutesBtn = document.createElement('button');
   clearRoutesBtn.innerHTML = `${ICONS.trash} Clear Routes`;
-  clearRoutesBtn.className = 'gem-button gem-button-success gem-button-center';
   clearRoutesBtn.onclick = () => onClearRoutesButtonPressed();
+  applyStyles(clearRoutesBtn, mergeStyles(styles.buttonBase, styles.buttonSuccess, {
+    position: 'fixed',
+    top: '30px',
+    left: '60%',
+    transform: 'translateX(-50%)',
+    display: 'none',
+  }));
+  StyleManager.addHoverEffect(clearRoutesBtn,
+    { background: '#43a047', boxShadow: '0 6px 20px rgba(76, 175, 80, 0.5)' },
+    { background: '#4caf50', boxShadow: '0 4px 15px rgba(76, 175, 80, 0.4)' }
+  );
   document.body.appendChild(clearRoutesBtn);
 
   updateUI();

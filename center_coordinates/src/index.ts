@@ -4,7 +4,7 @@
 // Contact Magic Lane at <info@magiclane.com> for SDK licensing options.
 
 import { GemKit, GemMap, Coordinates, PositionService } from '@magiclane/maps-sdk';
-import { GEMKIT_TOKEN, showMessage, ICONS } from '../../shared';
+import { GEMKIT_TOKEN, showMessage, ICONS, applyStyles, mergeStyles, styles, StyleManager } from '../../shared';
 
 let map: GemMap | null = null;
 
@@ -51,8 +51,17 @@ window.addEventListener('DOMContentLoaded', async () => {
 
   // Center Coordinates button
   centerCoordinatesBtn = document.createElement('button');
-  centerCoordinatesBtn.innerHTML = `${ICONS.place} Center Coordinates`;
-  centerCoordinatesBtn.className = 'gem-button gem-button-primary gem-button-center';
+  centerCoordinatesBtn.innerHTML = `${ICONS.location} Center Coordinates`;
   centerCoordinatesBtn.onclick = () => onCenterCoordinatesButtonPressed();
+  applyStyles(centerCoordinatesBtn, mergeStyles(styles.buttonBase, styles.buttonPrimary, {
+    position: 'fixed',
+    top: '30px',
+    left: '50%',
+    transform: 'translateX(-50%)',
+  }));
+  StyleManager.addHoverEffect(centerCoordinatesBtn,
+    { background: '#7e57c2', boxShadow: '0 6px 20px rgba(103, 58, 183, 0.5)' },
+    { background: '#673ab7', boxShadow: '0 4px 15px rgba(103, 58, 183, 0.4)' }
+  );
   document.body.appendChild(centerCoordinatesBtn);
 });

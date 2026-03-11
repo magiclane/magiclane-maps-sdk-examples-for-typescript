@@ -15,7 +15,7 @@ import {
   GuidedAddressSearchService,
   GemAnimation,
 } from '@magiclane/maps-sdk';
-import { GEMKIT_TOKEN, showMessage } from '../../shared';
+import { GEMKIT_TOKEN, showMessage, styleButton } from '../../shared';
 
 let map: GemMap | null = null;
 
@@ -122,7 +122,9 @@ window.addEventListener('DOMContentLoaded', async () => {
   // Add search button
   const searchBtn = document.createElement('button');
   searchBtn.textContent = 'Search Address';
-  searchBtn.className = 'gem-button gem-button-primary gem-button-center';
   searchBtn.onclick = onSearchButtonPressed;
+  styleButton(searchBtn, '#673ab7', '#7e57c2', {
+    display: 'flex',
+  });
   document.body.appendChild(searchBtn);
 });

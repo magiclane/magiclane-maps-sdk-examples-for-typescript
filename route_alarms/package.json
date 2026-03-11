@@ -1,6 +1,6 @@
 {
   "name": "route_alarms",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Demonstrates using the alarms service during route simulation",
   "main": "src/index.ts",
   "scripts": {
@@ -16,6 +16,6 @@
     "vite": "^6.3.5"
     },
   "dependencies": {
-    "@magiclane/maps-sdk": "^1.0.0"
+  "@magiclane/maps-sdk": "^1.1.0"
   }
 }

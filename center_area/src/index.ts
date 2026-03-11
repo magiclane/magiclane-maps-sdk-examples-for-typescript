@@ -12,7 +12,7 @@ import {
   GemAnimation,
   AnimationType,
 } from '@magiclane/maps-sdk';
-import { GEMKIT_TOKEN, showMessage, ICONS } from '../../shared';
+import { GEMKIT_TOKEN, showMessage, ICONS, applyStyles, mergeStyles, styles, StyleManager } from '../../shared';
 
 let map: GemMap | null = null;
 
@@ -73,8 +73,17 @@ window.addEventListener('DOMContentLoaded', async () => {
 
   // Center Area button
   centerAreaBtn = document.createElement('button');
-  centerAreaBtn.innerHTML = `${ICONS.centerFocus} Center on Area`;
-  centerAreaBtn.className = 'gem-button gem-button-primary gem-button-center';
+  centerAreaBtn.innerHTML = `${ICONS.myLocation} Center on Area`;
   centerAreaBtn.onclick = () => onCenterAreaButtonPressed();
+  applyStyles(centerAreaBtn, mergeStyles(styles.buttonBase, styles.buttonPrimary, {
+    position: 'fixed',
+    top: '30px',
+    left: '50%',
+    transform: 'translateX(-50%)',
+  }));
+  StyleManager.addHoverEffect(centerAreaBtn,
+    { background: '#7e57c2', boxShadow: '0 6px 20px rgba(103, 58, 183, 0.5)' },
+    { background: '#673ab7', boxShadow: '0 4px 15px rgba(103, 58, 183, 0.4)' }
+  );
   document.body.appendChild(centerAreaBtn);
 });
