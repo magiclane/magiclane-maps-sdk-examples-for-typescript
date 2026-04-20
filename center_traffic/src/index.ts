@@ -14,7 +14,15 @@ import {
   Route,
   TaskHandler,
 } from '@magiclane/maps-sdk';
-import { GEMKIT_TOKEN, showMessage, ICONS, applyStyles, mergeStyles, styles, StyleManager } from '../../shared';
+import {
+  GEMKIT_TOKEN,
+  showMessage,
+  ICONS,
+  applyStyles,
+  mergeStyles,
+  styles,
+  StyleManager,
+} from '../../shared';
 
 let map: GemMap | null = null;
 let routingHandler: TaskHandler | null = null;
@@ -143,14 +151,18 @@ window.addEventListener('DOMContentLoaded', async () => {
   buildRouteBtn = document.createElement('button');
   buildRouteBtn.innerHTML = `${ICONS.directions} Build Route`;
   buildRouteBtn.onclick = () => onBuildRouteButtonPressed();
-  applyStyles(buildRouteBtn, mergeStyles(styles.buttonBase, styles.buttonPrimary, {
-    position: 'fixed',
-    top: '30px',
-    left: '50%',
-    transform: 'translateX(-50%)',
-    display: 'none',
-  }));
-  StyleManager.addHoverEffect(buildRouteBtn,
+  applyStyles(
+    buildRouteBtn,
+    mergeStyles(styles.buttonBase, styles.buttonPrimary, {
+      position: 'fixed',
+      top: '30px',
+      left: '50%',
+      transform: 'translateX(-50%)',
+      display: 'none',
+    })
+  );
+  StyleManager.addHoverEffect(
+    buildRouteBtn,
     { background: '#7e57c2', boxShadow: '0 6px 20px rgba(103, 58, 183, 0.5)' },
     { background: '#673ab7', boxShadow: '0 4px 15px rgba(103, 58, 183, 0.4)' }
   );
@@ -160,14 +172,18 @@ window.addEventListener('DOMContentLoaded', async () => {
   cancelRouteBtn = document.createElement('button');
   cancelRouteBtn.innerHTML = `${ICONS.close} Cancel`;
   cancelRouteBtn.onclick = () => onCancelRouteButtonPressed();
-  applyStyles(cancelRouteBtn, mergeStyles(styles.buttonBase, styles.buttonDanger, {
-    position: 'fixed',
-    top: '30px',
-    left: '50%',
-    transform: 'translateX(-50%)',
-    display: 'none',
-  }));
-  StyleManager.addHoverEffect(cancelRouteBtn,
+  applyStyles(
+    cancelRouteBtn,
+    mergeStyles(styles.buttonBase, styles.buttonDanger, {
+      position: 'fixed',
+      top: '30px',
+      left: '50%',
+      transform: 'translateX(-50%)',
+      display: 'none',
+    })
+  );
+  StyleManager.addHoverEffect(
+    cancelRouteBtn,
     { background: '#e53935', boxShadow: '0 6px 20px rgba(244, 67, 54, 0.5)' },
     { background: '#f44336', boxShadow: '0 4px 15px rgba(244, 67, 54, 0.4)' }
   );
@@ -179,17 +195,25 @@ window.addEventListener('DOMContentLoaded', async () => {
   centerTrafficBtn.onclick = () => {
     if (currentRoute) centerOnTraffic(currentRoute);
   };
-  applyStyles(centerTrafficBtn, mergeStyles(styles.buttonBase, {
-    background: '#ff9800',
-    boxShadow: '0 4px 15px rgba(255, 152, 0, 0.4)',
-  }, {
-    position: 'fixed',
-    top: '30px',
-    left: '40%',
-    transform: 'translateX(-50%)',
-    display: 'none',
-  }));
-  StyleManager.addHoverEffect(centerTrafficBtn,
+  applyStyles(
+    centerTrafficBtn,
+    mergeStyles(
+      styles.buttonBase,
+      {
+        background: '#ff9800',
+        boxShadow: '0 4px 15px rgba(255, 152, 0, 0.4)',
+      },
+      {
+        position: 'fixed',
+        top: '30px',
+        left: '40%',
+        transform: 'translateX(-50%)',
+        display: 'none',
+      }
+    )
+  );
+  StyleManager.addHoverEffect(
+    centerTrafficBtn,
     { background: '#fb8c00', boxShadow: '0 6px 20px rgba(255, 152, 0, 0.5)' },
     { background: '#ff9800', boxShadow: '0 4px 15px rgba(255, 152, 0, 0.4)' }
   );
@@ -199,14 +223,18 @@ window.addEventListener('DOMContentLoaded', async () => {
   clearRoutesBtn = document.createElement('button');
   clearRoutesBtn.innerHTML = `${ICONS.trash} Clear Routes`;
   clearRoutesBtn.onclick = () => onClearRoutesButtonPressed();
-  applyStyles(clearRoutesBtn, mergeStyles(styles.buttonBase, styles.buttonSuccess, {
-    position: 'fixed',
-    top: '30px',
-    left: '60%',
-    transform: 'translateX(-50%)',
-    display: 'none',
-  }));
-  StyleManager.addHoverEffect(clearRoutesBtn,
+  applyStyles(
+    clearRoutesBtn,
+    mergeStyles(styles.buttonBase, styles.buttonSuccess, {
+      position: 'fixed',
+      top: '30px',
+      left: '60%',
+      transform: 'translateX(-50%)',
+      display: 'none',
+    })
+  );
+  StyleManager.addHoverEffect(
+    clearRoutesBtn,
     { background: '#43a047', boxShadow: '0 6px 20px rgba(76, 175, 80, 0.5)' },
     { background: '#4caf50', boxShadow: '0 4px 15px rgba(76, 175, 80, 0.4)' }
   );

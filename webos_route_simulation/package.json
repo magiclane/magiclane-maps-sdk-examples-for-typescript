@@ -11,7 +11,7 @@
   "license": "Apache-2.0",
   "type": "commonjs",
   "dependencies": {
-  "@magiclane/maps-sdk": "^1.1.0"
+    "@magiclane/maps-sdk": "^1.2.0"
   },
   "devDependencies": {
     "@types/node": "^25.2.0",

@@ -126,13 +126,17 @@ window.addEventListener('DOMContentLoaded', async () => {
   // 1. Polyline button (Left)
   const polylineBtn = document.createElement('button');
   polylineBtn.innerHTML = `${ICONS.polyline} Polyline`;
-  applyStyles(polylineBtn, mergeStyles(styles.buttonBase, styles.buttonPrimary, {
-    position: 'fixed',
-    top: '30px',
-    left: '50%',
-    transform: 'translateX(-160%)',
-  }));
-  StyleManager.addHoverEffect(polylineBtn,
+  applyStyles(
+    polylineBtn,
+    mergeStyles(styles.buttonBase, styles.buttonPrimary, {
+      position: 'fixed',
+      top: '30px',
+      left: '50%',
+      transform: 'translateX(-160%)',
+    })
+  );
+  StyleManager.addHoverEffect(
+    polylineBtn,
     { background: '#7e57c2', boxShadow: '0 6px 20px rgba(103, 58, 183, 0.5)' },
     { background: '#673ab7', boxShadow: '0 4px 15px rgba(103, 58, 183, 0.4)' }
   );
@@ -142,13 +146,17 @@ window.addEventListener('DOMContentLoaded', async () => {
   // 2. Polygon button (Center)
   const polygonBtn = document.createElement('button');
   polygonBtn.innerHTML = `${ICONS.polygon} Polygon`;
-  applyStyles(polygonBtn, mergeStyles(styles.buttonBase, styles.buttonInfo, {
-    position: 'fixed',
-    top: '30px',
-    left: '50%',
-    transform: 'translateX(-50%)',
-  }));
-  StyleManager.addHoverEffect(polygonBtn,
+  applyStyles(
+    polygonBtn,
+    mergeStyles(styles.buttonBase, styles.buttonInfo, {
+      position: 'fixed',
+      top: '30px',
+      left: '50%',
+      transform: 'translateX(-50%)',
+    })
+  );
+  StyleManager.addHoverEffect(
+    polygonBtn,
     { background: '#42a5f5', boxShadow: '0 6px 20px rgba(33, 150, 243, 0.5)' },
     { background: '#2196f3', boxShadow: '0 4px 15px rgba(33, 150, 243, 0.4)' }
   );
@@ -158,13 +166,17 @@ window.addEventListener('DOMContentLoaded', async () => {
   // 3. Points button (Right)
   const pointsBtn = document.createElement('button');
   pointsBtn.innerHTML = `${ICONS.points} Points`;
-  applyStyles(pointsBtn, mergeStyles(styles.buttonBase, styles.buttonSuccess, {
-    position: 'fixed',
-    top: '30px',
-    left: '50%',
-    transform: 'translateX(60%)',
-  }));
-  StyleManager.addHoverEffect(pointsBtn,
+  applyStyles(
+    pointsBtn,
+    mergeStyles(styles.buttonBase, styles.buttonSuccess, {
+      position: 'fixed',
+      top: '30px',
+      left: '50%',
+      transform: 'translateX(60%)',
+    })
+  );
+  StyleManager.addHoverEffect(
+    pointsBtn,
     { background: '#43a047', boxShadow: '0 6px 20px rgba(76, 175, 80, 0.5)' },
     { background: '#4caf50', boxShadow: '0 4px 15px rgba(76, 175, 80, 0.4)' }
   );

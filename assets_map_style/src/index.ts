@@ -54,7 +54,7 @@ async function applyStyle() {
     const response = await fetch('./Basic_1_Oldtime-1_21_656.style');
     if (!response.ok) throw new Error('Failed to load style file');
     const styleBuffer = await response.arrayBuffer();
-    
+
     // Register callback to be notified when map style is changed
     map.registerSetMapStyleCallback((id: number, stylePath: string, viaApi: boolean) => {
       showMessage('Map style applied successfully!');
@@ -63,7 +63,7 @@ async function applyStyle() {
       // Center the map after style is applied
       map?.centerOnCoordinates(new Coordinates({ latitude: 45, longitude: 20 }), { zoomLevel: 25 });
     });
-    
+
     // Apply style to map (using setMapStyleByBuffer)
     map.preferences.setMapStyleByBuffer(new Uint8Array(styleBuffer));
     showMessage('Loading map style...');

@@ -17,7 +17,17 @@ import {
   BikeProfileElectricBikeProfile,
   TaskHandler,
 } from '@magiclane/maps-sdk';
-import { GEMKIT_TOKEN, showMessage, ICONS, convertDistance, convertDuration, applyStyles, mergeStyles, styles, StyleManager } from '../../shared';
+import {
+  GEMKIT_TOKEN,
+  showMessage,
+  ICONS,
+  convertDistance,
+  convertDuration,
+  applyStyles,
+  mergeStyles,
+  styles,
+  StyleManager,
+} from '../../shared';
 
 // Type for screen position coordinates
 interface ScreenPosition {
@@ -222,7 +232,7 @@ function createBikeProfileMenu(): HTMLDivElement {
   `;
 
   const profiles = [
-    { type: EBikeType.city, label: 'City Bike', icon: ICONS.city }, 
+    { type: EBikeType.city, label: 'City Bike', icon: ICONS.city },
     { type: EBikeType.cross, label: 'Cross Bike', icon: ICONS.cross },
     { type: EBikeType.mountain, label: 'Mountain Bike', icon: ICONS.mountain },
     { type: EBikeType.road, label: 'Road Bike', icon: ICONS.road },
@@ -301,12 +311,16 @@ window.addEventListener('DOMContentLoaded', async () => {
     e.stopPropagation();
     showBikeProfileMenu();
   };
-  applyStyles(bikeProfileBtn, mergeStyles(styles.buttonBase, styles.buttonSecondary, {
-    position: 'fixed',
-    top: '30px',
-    right: '20px',
-  }));
-  StyleManager.addHoverEffect(bikeProfileBtn, 
+  applyStyles(
+    bikeProfileBtn,
+    mergeStyles(styles.buttonBase, styles.buttonSecondary, {
+      position: 'fixed',
+      top: '30px',
+      right: '20px',
+    })
+  );
+  StyleManager.addHoverEffect(
+    bikeProfileBtn,
     { boxShadow: '0 6px 20px rgba(0,0,0,0.2)' },
     { boxShadow: '0 4px 15px rgba(0,0,0,0.15)' }
   );
@@ -316,14 +330,18 @@ window.addEventListener('DOMContentLoaded', async () => {
   buildRouteBtn = document.createElement('button');
   buildRouteBtn.innerHTML = `${ICONS.bike} Build Bike Route`;
   buildRouteBtn.onclick = () => onBuildRouteButtonPressed();
-  applyStyles(buildRouteBtn, mergeStyles(styles.buttonBase, styles.buttonPrimary, {
-    position: 'fixed',
-    top: '30px',
-    left: '50%',
-    transform: 'translateX(-50%)',
-    display: 'none',
-  }));
-  StyleManager.addHoverEffect(buildRouteBtn,
+  applyStyles(
+    buildRouteBtn,
+    mergeStyles(styles.buttonBase, styles.buttonPrimary, {
+      position: 'fixed',
+      top: '30px',
+      left: '50%',
+      transform: 'translateX(-50%)',
+      display: 'none',
+    })
+  );
+  StyleManager.addHoverEffect(
+    buildRouteBtn,
     { background: '#7e57c2', boxShadow: '0 6px 20px rgba(103, 58, 183, 0.5)' },
     { background: '#673ab7', boxShadow: '0 4px 15px rgba(103, 58, 183, 0.4)' }
   );
@@ -333,14 +351,18 @@ window.addEventListener('DOMContentLoaded', async () => {
   cancelRouteBtn = document.createElement('button');
   cancelRouteBtn.innerHTML = `${ICONS.close} Cancel`;
   cancelRouteBtn.onclick = () => onCancelRouteButtonPressed();
-  applyStyles(cancelRouteBtn, mergeStyles(styles.buttonBase, styles.buttonDanger, {
-    position: 'fixed',
-    top: '30px',
-    left: '50%',
-    transform: 'translateX(-50%)',
-    display: 'none',
-  }));
-  StyleManager.addHoverEffect(cancelRouteBtn,
+  applyStyles(
+    cancelRouteBtn,
+    mergeStyles(styles.buttonBase, styles.buttonDanger, {
+      position: 'fixed',
+      top: '30px',
+      left: '50%',
+      transform: 'translateX(-50%)',
+      display: 'none',
+    })
+  );
+  StyleManager.addHoverEffect(
+    cancelRouteBtn,
     { background: '#e53935', boxShadow: '0 6px 20px rgba(244, 67, 54, 0.5)' },
     { background: '#f44336', boxShadow: '0 4px 15px rgba(244, 67, 54, 0.4)' }
   );
@@ -350,14 +372,18 @@ window.addEventListener('DOMContentLoaded', async () => {
   clearRoutesBtn = document.createElement('button');
   clearRoutesBtn.innerHTML = `${ICONS.trash} Clear Routes`;
   clearRoutesBtn.onclick = () => onClearRoutesButtonPressed();
-  applyStyles(clearRoutesBtn, mergeStyles(styles.buttonBase, styles.buttonSuccess, {
-    position: 'fixed',
-    top: '30px',
-    left: '50%',
-    transform: 'translateX(-50%)',
-    display: 'none',
-  }));
-  StyleManager.addHoverEffect(clearRoutesBtn,
+  applyStyles(
+    clearRoutesBtn,
+    mergeStyles(styles.buttonBase, styles.buttonSuccess, {
+      position: 'fixed',
+      top: '30px',
+      left: '50%',
+      transform: 'translateX(-50%)',
+      display: 'none',
+    })
+  );
+  StyleManager.addHoverEffect(
+    clearRoutesBtn,
     { background: '#43a047', boxShadow: '0 6px 20px rgba(76, 175, 80, 0.5)' },
     { background: '#4caf50', boxShadow: '0 4px 15px rgba(76, 175, 80, 0.4)' }
   );

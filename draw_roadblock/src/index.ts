@@ -15,7 +15,16 @@ import {
   UserRoadblockPathPreviewCoordinate,
   Color,
 } from '@magiclane/maps-sdk';
-import { GEMKIT_TOKEN, showMessage, ICONS, styleButton, applyStyles, mergeStyles, styles, StyleManager } from '../../shared';
+import {
+  GEMKIT_TOKEN,
+  showMessage,
+  ICONS,
+  styleButton,
+  applyStyles,
+  mergeStyles,
+  styles,
+  StyleManager,
+} from '../../shared';
 
 let map: GemMap | null = null;
 let drawMode = false;
@@ -237,13 +246,17 @@ window.addEventListener('DOMContentLoaded', async () => {
   // 1. Add Segment Button
   addBtn = document.createElement('button');
   addBtn.innerHTML = `${ICONS.add} Add`;
-  applyStyles(addBtn, mergeStyles(styles.buttonBase, styles.buttonInfo, {
-    position: 'fixed',
-    top: '30px',
-    left: '50%',
-    display: 'none',
-  }));
-  StyleManager.addHoverEffect(addBtn,
+  applyStyles(
+    addBtn,
+    mergeStyles(styles.buttonBase, styles.buttonInfo, {
+      position: 'fixed',
+      top: '30px',
+      left: '50%',
+      display: 'none',
+    })
+  );
+  StyleManager.addHoverEffect(
+    addBtn,
     { background: '#42a5f5', boxShadow: '0 6px 20px rgba(33, 150, 243, 0.5)' },
     { background: '#2196f3', boxShadow: '0 4px 15px rgba(33, 150, 243, 0.4)' }
   );
@@ -253,13 +266,17 @@ window.addEventListener('DOMContentLoaded', async () => {
   // 2. Draw Mode Button (Start)
   drawBtn = document.createElement('button');
   drawBtn.innerHTML = `${ICONS.draw} Draw Roadblock`;
-  applyStyles(drawBtn, mergeStyles(styles.buttonBase, styles.buttonPrimary, {
-    position: 'fixed',
-    top: '30px',
-    left: '50%',
-    transform: 'translateX(-50%)',
-  }));
-  StyleManager.addHoverEffect(drawBtn,
+  applyStyles(
+    drawBtn,
+    mergeStyles(styles.buttonBase, styles.buttonPrimary, {
+      position: 'fixed',
+      top: '30px',
+      left: '50%',
+      transform: 'translateX(-50%)',
+    })
+  );
+  StyleManager.addHoverEffect(
+    drawBtn,
     { background: '#7e57c2', boxShadow: '0 6px 20px rgba(103, 58, 183, 0.5)' },
     { background: '#673ab7', boxShadow: '0 4px 15px rgba(103, 58, 183, 0.4)' }
   );
@@ -269,13 +286,17 @@ window.addEventListener('DOMContentLoaded', async () => {
   // 3. Finish Button
   checkBtn = document.createElement('button');
   checkBtn.innerHTML = `${ICONS.check} Finish`;
-  applyStyles(checkBtn, mergeStyles(styles.buttonBase, styles.buttonSuccess, {
-    position: 'fixed',
-    top: '30px',
-    left: '50%',
-    display: 'none',
-  }));
-  StyleManager.addHoverEffect(checkBtn,
+  applyStyles(
+    checkBtn,
+    mergeStyles(styles.buttonBase, styles.buttonSuccess, {
+      position: 'fixed',
+      top: '30px',
+      left: '50%',
+      display: 'none',
+    })
+  );
+  StyleManager.addHoverEffect(
+    checkBtn,
     { background: '#43a047', boxShadow: '0 6px 20px rgba(76, 175, 80, 0.5)' },
     { background: '#4caf50', boxShadow: '0 4px 15px rgba(76, 175, 80, 0.4)' }
   );
@@ -285,13 +306,17 @@ window.addEventListener('DOMContentLoaded', async () => {
   // 4. Cancel Button
   cancelBtn = document.createElement('button');
   cancelBtn.innerHTML = `${ICONS.close} Cancel`;
-  applyStyles(cancelBtn, mergeStyles(styles.buttonBase, styles.buttonDanger, {
-    position: 'fixed',
-    top: '30px',
-    left: '50%',
-    display: 'none',
-  }));
-  StyleManager.addHoverEffect(cancelBtn,
+  applyStyles(
+    cancelBtn,
+    mergeStyles(styles.buttonBase, styles.buttonDanger, {
+      position: 'fixed',
+      top: '30px',
+      left: '50%',
+      display: 'none',
+    })
+  );
+  StyleManager.addHoverEffect(
+    cancelBtn,
     { background: '#e53935', boxShadow: '0 6px 20px rgba(244, 67, 54, 0.5)' },
     { background: '#f44336', boxShadow: '0 4px 15px rgba(244, 67, 54, 0.4)' }
   );

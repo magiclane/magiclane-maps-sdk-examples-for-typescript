@@ -1,12 +1,14 @@
 {
   "name": "maps-sdk-examples-scripts",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Build and test scripts for Maps SDK TypeScript examples",
   "type": "module",
   "scripts": {
     "build-all": "node build-all.js",
     "smoke-test": "node smoke-test.js",
     "test": "node build-all.js && node smoke-test.js",
+    "clean": "node clean-all.js",
+    "clean:deep": "node clean-all.js --deep",
     "postinstall": "playwright install chromium",
     "format": "prettier --write \"../**/*.ts\" --ignore-path ../.prettierignore",
     "format:check": "prettier --check \"../**/*.ts\" --ignore-path ../.prettierignore"

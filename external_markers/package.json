@@ -16,6 +16,6 @@
     "vite": "^6.3.5"
   },
   "dependencies": {
-  "@magiclane/maps-sdk": "^1.1.0"
+    "@magiclane/maps-sdk": "^1.2.0"
   }
 }

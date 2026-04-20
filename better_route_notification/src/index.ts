@@ -19,7 +19,13 @@ import {
   NavigationEventType,
   NavigationInstructionUpdateEvents,
 } from '@magiclane/maps-sdk';
-import { GEMKIT_TOKEN, showMessage, convertDistance, convertDuration, styleButton } from '../../shared';
+import {
+  GEMKIT_TOKEN,
+  showMessage,
+  convertDistance,
+  convertDuration,
+  styleButton,
+} from '../../shared';
 
 let map: GemMap | null = null;
 let currentInstruction: NavigationInstruction | null = null;

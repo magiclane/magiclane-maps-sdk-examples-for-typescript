@@ -12,7 +12,15 @@ import {
   GemAnimation,
   AnimationType,
 } from '@magiclane/maps-sdk';
-import { GEMKIT_TOKEN, showMessage, ICONS, applyStyles, mergeStyles, styles, StyleManager } from '../../shared';
+import {
+  GEMKIT_TOKEN,
+  showMessage,
+  ICONS,
+  applyStyles,
+  mergeStyles,
+  styles,
+  StyleManager,
+} from '../../shared';
 
 let map: GemMap | null = null;
 let hasLiveDataSource = false;
@@ -90,13 +98,17 @@ window.addEventListener('DOMContentLoaded', async () => {
   followPositionBtn = document.createElement('button');
   followPositionBtn.innerHTML = `${ICONS.myLocation} Follow Position`;
   followPositionBtn.onclick = () => onFollowPositionButtonPressed();
-  applyStyles(followPositionBtn, mergeStyles(styles.buttonBase, styles.buttonPrimary, {
-    position: 'fixed',
-    top: '30px',
-    left: '50%',
-    transform: 'translateX(-50%)',
-  }));
-  StyleManager.addHoverEffect(followPositionBtn,
+  applyStyles(
+    followPositionBtn,
+    mergeStyles(styles.buttonBase, styles.buttonPrimary, {
+      position: 'fixed',
+      top: '30px',
+      left: '50%',
+      transform: 'translateX(-50%)',
+    })
+  );
+  StyleManager.addHoverEffect(
+    followPositionBtn,
     { background: '#7e57c2', boxShadow: '0 6px 20px rgba(103, 58, 183, 0.5)' },
     { background: '#673ab7', boxShadow: '0 4px 15px rgba(103, 58, 183, 0.4)' }
   );

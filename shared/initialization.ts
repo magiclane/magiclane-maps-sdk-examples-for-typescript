@@ -166,34 +166,25 @@ export async function initializeSDK<T>(
  * @returns The wrapper element or null on error
  */
 export function createMapView<
-  TGemKit extends { createView: (id: number, callback: (map: TMap) => void) => HTMLElement | null },
+  TGemKit extends {
+    createView: (
+      id: number,
+      callback: (map: TMap) => void,
+      styleContent?: Uint8Array
+    ) => HTMLDivElement;
+  },
   TMap,
 >(
   gemKit: TGemKit,
   container: HTMLElement,
   viewId: number,
   onMapCreated: (map: TMap) => void,
-  options: { showErrorMessages?: boolean } = {}
-): HTMLElement | null {
-  const { showErrorMessages = true } = options;
+  options: { showErrorMessages?: boolean; styleContent?: Uint8Array } = {}
+): HTMLDivElement | null {
+  const { showErrorMessages = true, styleContent } = options;
 
   try {
-    const wrapper = gemKit.createView(viewId, onMapCreated);
-
-    if (!wrapper) {
-      const error = new InitializationError(
-        InitializationErrorType.ViewCreationFailed,
-        'Failed to create map view. The SDK returned null.'
-      );
-      console.error('[SDK View Creation Error]', error.message);
-
-      if (showErrorMessages) {
-        showMessage('Error: Failed to create map view.', 5000);
-      }
-
-      return null;
-    }
-
+    const wrapper = gemKit.createView(viewId, onMapCreated, styleContent);
     container.appendChild(wrapper);
     return wrapper;
   } catch (error) {

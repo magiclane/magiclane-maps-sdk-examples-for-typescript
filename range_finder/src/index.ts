@@ -60,14 +60,14 @@ window.addEventListener('DOMContentLoaded', async () => {
   const wrapper = createMapView(gemKit, container, viewId, (gemMap: GemMap) => {
     map = gemMap;
     registerLandmarkTapCallback();
-    
+
     // Zoom in to make landmarks visible (using Berlin as center point)
     const initialCenter = new Coordinates({
-      latitude: 52.5200,
-      longitude: 13.4050,
+      latitude: 52.52,
+      longitude: 13.405,
     });
     map.centerOnCoordinates(initialCenter, { zoomLevel: 70 });
-    
+
     showMessage('Tap on a landmark to start');
   });
 

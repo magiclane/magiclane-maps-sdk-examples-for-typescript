@@ -323,8 +323,13 @@ function cancelRoute() {
 }
 
 // --- Follow position ---
-function onFollowPositionButtonPressed() {
+async function onFollowPositionButtonPressed() {
   if (!hasLiveDataSource) {
+    const permission = await PositionService.requestLocationPermission();
+    if (!permission) {
+      showMessage('Location permission denied.');
+      return;
+    }
     PositionService.instance.setLiveDataSource();
     const sourceType = PositionService.instance.sourceType;
     if (sourceType !== 'live') {

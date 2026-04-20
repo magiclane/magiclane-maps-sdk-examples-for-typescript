@@ -11,7 +11,14 @@ import {
   GemError,
   CommonOverlayId,
 } from '@magiclane/maps-sdk';
-import { GEMKIT_TOKEN, showMessage, applyStyles, mergeStyles, styles, StyleManager } from '../../shared';
+import {
+  GEMKIT_TOKEN,
+  showMessage,
+  applyStyles,
+  mergeStyles,
+  styles,
+  StyleManager,
+} from '../../shared';
 
 // Type for screen position coordinates
 interface ScreenPosition {
@@ -354,11 +361,11 @@ async function updatePublicTransitStopPanel() {
   }
 }
 
-// Register long press callback for selecting PT stops
-function registerLongPressCallback() {
+// Register tap callback for selecting PT stops
+function registerTapCallback() {
   if (!map) return;
 
-  map.registerLongPressCallback(async (pos: ScreenPosition) => {
+  map.registerTouchCallback(async (pos: ScreenPosition) => {
     await map!.setCursorScreenPosition(pos);
 
     const items = map!.cursorSelectionOverlayItemsByType(CommonOverlayId.PublicTransport);
@@ -392,22 +399,30 @@ function setupUI() {
 
   // Create instruction button
   const instructionBtn = document.createElement('button');
-  instructionBtn.innerHTML = 'ℹ️ Long-press to find stops';
-  applyStyles(instructionBtn, mergeStyles(styles.buttonBase, {
-    background: '#ff9800',
-    boxShadow: '0 4px 15px rgba(255, 152, 0, 0.4)',
-  }, {
-    position: 'fixed',
-    top: '70px',
-    left: '50%',
-    transform: 'translateX(-50%)',
-  }));
-  StyleManager.addHoverEffect(instructionBtn,
+  instructionBtn.innerHTML = 'ℹ️ Tap a stop to find stops';
+  applyStyles(
+    instructionBtn,
+    mergeStyles(
+      styles.buttonBase,
+      {
+        background: '#ff9800',
+        boxShadow: '0 4px 15px rgba(255, 152, 0, 0.4)',
+      },
+      {
+        position: 'fixed',
+        top: '70px',
+        left: '50%',
+        transform: 'translateX(-50%)',
+      }
+    )
+  );
+  StyleManager.addHoverEffect(
+    instructionBtn,
     { background: '#fb8c00', boxShadow: '0 6px 20px rgba(255, 152, 0, 0.5)' },
     { background: '#ff9800', boxShadow: '0 4px 15px rgba(255, 152, 0, 0.4)' }
   );
   instructionBtn.onclick = () => {
-    showMessage('Long-press on a public transit stop marker to view schedule details');
+    showMessage('Tap a public transit stop marker to view schedule details');
   };
   document.body.appendChild(instructionBtn);
 
@@ -443,7 +458,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   const viewId = 12;
   const wrapper = gemKit.createView(viewId, (gemMap: GemMap) => {
     map = gemMap;
-    registerLongPressCallback();
+    registerTapCallback();
   });
   if (wrapper) container.appendChild(wrapper);
 });

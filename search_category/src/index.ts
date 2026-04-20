@@ -284,12 +284,12 @@ function getFormattedDistance(landmark: Landmark): string {
   try {
     // Try to get distance from extraInfo first
     let dist = landmark.extraInfo?.getByKey?.('gm_search_result_dist') || 0;
-    
+
     // If distance is 0 and we have search center coords, calculate manually
     if (dist === 0 && searchCenterCoords && landmark.coordinates) {
       dist = searchCenterCoords.distance(landmark.coordinates);
     }
-    
+
     const km = (dist / 1000).toFixed(1);
     return `${km} km`;
   } catch {
